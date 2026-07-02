@@ -24,6 +24,13 @@ const Navbar = () => {
         }
     }
 
+    const navLinks = [
+        { id: 'home', label: 'Home' },
+        { id: 'why-nerd', label: 'Why NERD' },
+        { id: 'features', label: 'Features' },
+        { id: 'contact', label: 'Contact' },
+    ]
+
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm ${isScrolled ? 'bg-white/95 shadow-lg' : 'bg-white/80'
             }`}>
@@ -32,48 +39,39 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
                         <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 md:w-10 md:h-10 bg-linear-to-br from-special-red to-red-600 rounded-xl flex items-center justify-center transform rotate-3 hover:rotate-6 transition-transform duration-300">
-                                <span className="text-white font-bold text-lg md:text-xl">AI</span>
-                            </div>
-                            <span className="text-xl md:text-2xl font-bold text-custom-black tracking-tight">
-                                <span className="text-special-red">Nex</span>AI
-                            </span>
+                            <h1
+                                className="text-3xl font-black uppercase"
+                                style={{
+                                    background: "linear-gradient(135deg, #021a54 0%, #021a54 70%, #ff85bb 100%)",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
+                                    backgroundClip: "text",
+                                }}
+                            >
+                                NERD
+                            </h1>
                         </div>
                     </div>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-8">
                         <ul className="flex space-x-8">
-                            <li>
-                                <button
-                                    onClick={() => scrollToSection('home')}
-                                    className="text-custom-black hover:text-special-red transition-colors duration-200 font-medium text-sm lg:text-base cursor-pointer"
-                                >
-                                    Home
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => scrollToSection('features')}
-                                    className="text-custom-black hover:text-special-red transition-colors duration-200 font-medium text-sm lg:text-base cursor-pointer"
-                                >
-                                    Features
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => scrollToSection('contact')}
-                                    className="text-custom-black hover:text-special-red transition-colors duration-200 font-medium text-sm lg:text-base cursor-pointer"
-                                >
-                                    Contact
-                                </button>
-                            </li>
+                            {navLinks.map((link) => (
+                                <li key={link.id}>
+                                    <button
+                                        onClick={() => scrollToSection(link.id)}
+                                        className="text-primary-blue hover:text-accent-pink transition-colors duration-200 font-medium text-sm lg:text-base cursor-pointer"
+                                    >
+                                        {link.label}
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
                         <button
                             onClick={() => scrollToSection('contact')}
-                            className="bg-special-red text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-red-700 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 cursor-pointer"
+                            className="bg-primary-blue text-white px-6 py-2.5 rounded-xl font-medium text-sm hover:bg-accent-pink transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent-pink/30 cursor-pointer"
                         >
-                            Get Started
+                            Add to Chrome
                         </button>
                     </div>
 
@@ -81,15 +79,15 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <button
                             onClick={toggleMenu}
-                            className="p-2 rounded-lg hover:bg-custom-gray/50 transition-colors duration-200"
+                            className="p-2 rounded-lg hover:bg-light-gray transition-colors duration-200"
                             aria-label="Toggle menu"
                         >
                             <div className="w-6 h-5 flex flex-col justify-between">
-                                <span className={`block h-0.5 bg-custom-black transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''
+                                <span className={`block h-0.5 bg-primary-blue transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''
                                     }`}></span>
-                                <span className={`block h-0.5 bg-custom-black transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''
+                                <span className={`block h-0.5 bg-primary-blue transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''
                                     }`}></span>
-                                <span className={`block h-0.5 bg-custom-black transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                                <span className={`block h-0.5 bg-primary-blue transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''
                                     }`}></span>
                             </div>
                         </button>
@@ -100,29 +98,20 @@ const Navbar = () => {
                 <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
                     <div className="py-4 space-y-3">
-                        <button
-                            onClick={() => scrollToSection('home')}
-                            className="block w-full text-left px-4 py-3 text-custom-black hover:bg-custom-gray/30 rounded-lg transition-colors duration-200 font-medium"
-                        >
-                            Home
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('features')}
-                            className="block w-full text-left px-4 py-3 text-custom-black hover:bg-custom-gray/30 rounded-lg transition-colors duration-200 font-medium"
-                        >
-                            Features
-                        </button>
+                        {navLinks.map((link) => (
+                            <button
+                                key={link.id}
+                                onClick={() => scrollToSection(link.id)}
+                                className="block w-full text-left px-4 py-3 text-primary-blue hover:bg-light-pink/40 rounded-lg transition-colors duration-200 font-medium"
+                            >
+                                {link.label}
+                            </button>
+                        ))}
                         <button
                             onClick={() => scrollToSection('contact')}
-                            className="block w-full text-left px-4 py-3 text-custom-black hover:bg-custom-gray/30 rounded-lg transition-colors duration-200 font-medium"
+                            className="w-full bg-primary-blue text-white px-6 py-3 rounded-xl font-medium hover:bg-accent-pink transition-colors duration-200"
                         >
-                            Contact
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('contact')}
-                            className="w-full bg-special-red text-white px-6 py-3 rounded-full font-medium hover:bg-red-700 transition-colors duration-200"
-                        >
-                            Get Started
+                            Add to Chrome
                         </button>
                     </div>
                 </div>
