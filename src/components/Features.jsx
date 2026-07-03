@@ -89,6 +89,7 @@ const FeatureCard = ({ feature }) => {
         <div
             className="relative w-full min-h-[480px] sm:min-h-[560px] md:min-h-[620px]"
             style={{ perspective: '2000px' }}
+            id={feature.id}
         >
             <div
                 className="relative h-full min-h-[480px] w-full transition-transform duration-700 ease-in-out sm:min-h-[560px] md:min-h-[620px]"
