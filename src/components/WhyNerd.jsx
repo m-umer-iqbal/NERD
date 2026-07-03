@@ -27,7 +27,7 @@ const differentiators = [
     {
         title: 'Localhost-only by design',
         description:
-            'Every feature simply refuses to run anywhere else — no accidental prod exposure, no configuration required.',
+            'Every feature simply refuses to run anywhere else, no accidental prod exposure, no configuration required.',
         icon: (
             <path
                 strokeLinecap="round"
