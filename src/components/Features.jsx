@@ -25,7 +25,7 @@ const FEATURES = [
         headline: 'Catch it before your users do.',
         description:
             'A full performance, accessibility, and code scan in one click, fixes included.',
-        video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783025638/local-form-saver-testing-video_f0r0uz.mp4',
+        video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783106510/Website-Auditor_Testing_tvrhtl.mp4',
         howToUse: [
             'Open the extension popup and go to Website Auditor.',
             'Click “Run Smart Analysis” & it scans the current page.',
@@ -40,7 +40,7 @@ const FEATURES = [
         headline: 'Errors that explain themselves.',
         description:
             'No more AI prompt loop, get the cause and the fix, in plain English, instantly.',
-        video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783025638/local-form-saver-testing-video_f0r0uz.mp4',
+        video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783106507/Debugging-Assistant_Testing_pkfuso.mp4',
         howToUse: [
             'Click “Start Monitoring” in the extension popup.',
             'Interact with your localhost page, any JS error is captured.',
