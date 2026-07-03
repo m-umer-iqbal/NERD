@@ -54,7 +54,7 @@ const socials = [
 
 const FooterColumn = ({ title, links }) => (
     <div>
-        <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-light-pink font-bold" >
+        <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-accent-pink font-bold" >
             {title}
         </h3>
         <ul className="mt-4 space-y-3">
