@@ -106,7 +106,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-medium text-primary-blue">GitHub</h4>
-                                        <p className="text-sm text-gray-600">github.com/nerd-tools</p>
+                                        <p className="text-sm text-gray-600">github.com/fyp-nerd</p>
                                     </div>
                                 </a>
 
@@ -116,7 +116,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-medium text-primary-blue">X (Twitter)</h4>
-                                        <p className="text-sm text-gray-600">@nerd_tools</p>
+                                        <p className="text-sm text-gray-600">@nerd_extension</p>
                                     </div>
                                 </a>
 
