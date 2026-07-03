@@ -57,7 +57,7 @@ const Contact = () => {
                 }}
             />
             <div
-                className="pointer-events-none absolute -bottom-30 -left-10 h-96 w-96 rounded-full opacity-20 blur-3xl"
+                className="pointer-events-none absolute -bottom-30 -right-10 h-96 w-96 rounded-full opacity-20 blur-3xl"
                 style={{ background: '#FF85BB' }}
             />
 
@@ -201,7 +201,7 @@ const Contact = () => {
                                 <div className="pt-2">
                                     <button
                                         type="submit"
-                                        className="inline-flex w-full items-center justify-center rounded-xl bg-primary-blue px-6 py-3.5 font-medium text-white shadow-lg shadow-primary-blue/20 transition-all duration-300 hover:scale-[1.02] hover:bg-accent-pink hover:shadow-lg hover:shadow-accent-pink/30 focus:outline-none focus:ring-2 focus:ring-accent-pink/50"
+                                        className="inline-flex w-full items-center justify-center rounded-xl bg-primary-blue px-6 py-3.5 font-medium text-white shadow-lg shadow-primary-blue/20 transition-all duration-300 hover:scale-[1.02] hover:bg-accent-pink hover:scale-105 hover:shadow-accent-pink/40 focus:outline-none focus:ring-2 focus:ring-accent-pink/50 cursor-pointer"
                                     >
                                         {submitted ? (
                                             <>
