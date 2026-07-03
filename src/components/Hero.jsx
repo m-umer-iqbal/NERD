@@ -80,7 +80,7 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-light-gray"
+            className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
         >
             {/* faint grid texture */}
             <div
@@ -92,7 +92,7 @@ const Hero = () => {
                 }}
             />
             <div
-                className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full opacity-25 blur-3xl"
+                className="pointer-events-none absolute top-10 right-0 h-96 w-96 rounded-full opacity-25 blur-3xl"
                 style={{ background: '#FF85BB' }}
             />
 
