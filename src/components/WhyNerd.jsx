@@ -139,9 +139,8 @@ const WhyNerd = () => {
                         </span>
                     </h2>
                     <p
-                        className={`mt-5 min-h-[1.75rem] text-base font-medium text-gray-600 transition-opacity duration-300 sm:text-lg ${
-                            fade ? 'opacity-100' : 'opacity-0'
-                        }`}
+                        className={`mt-5 min-h-7 text-base font-medium text-gray-600 transition-opacity duration-300 sm:text-lg ${fade ? 'opacity-100' : 'opacity-0'
+                            }`}
                     >
                         {taglines[taglineIndex]}
                     </p>
