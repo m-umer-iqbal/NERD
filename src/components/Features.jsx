@@ -185,6 +185,14 @@ const Features = () => {
                     backgroundSize: '32px 32px',
                 }}
             />
+            <div
+                className="pointer-events-none absolute top-30 -right-10 h-96 w-96 rounded-full opacity-20 blur-3xl"
+                style={{ background: '#FF85BB' }}
+            />
+            <div
+                className="pointer-events-none absolute bottom-20 -left-10 h-96 w-96 rounded-full opacity-20 blur-3xl"
+                style={{ background: '#FF85BB' }}
+            />
             <div className="relative z-10 mx-auto max-w-6xl px-6">
                 <div className="mx-auto max-w-2xl text-center">
                     <span className="inline-flex items-center gap-2 rounded-full border border-primary-blue/20 bg-white/80 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-primary-blue shadow-sm">
