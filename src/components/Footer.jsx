@@ -20,6 +20,16 @@ const projectLinks = [
 
 const socials = [
     {
+        label: 'Email',
+        href: 'mailto:hello@nerd.dev',
+        icon: (
+            <>
+                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+            </>
+        ),
+    },
+    {
         label: 'GitHub',
         href: '#github',
         icon: (
@@ -130,9 +140,9 @@ const Footer = () => {
                 {/* Divider */}
                 <div className="my-10 h-px w-full bg-linear-to-r from-transparent via-light-pink to-transparent" />
 
-                {/* Bottom bar */}
-                <div className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center">
-                    <p className="text-xs text-light-gray/50">
+                {/* Bottom bar – centered on all devices */}
+                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                    <p className="text-xs text-light-gray/50 text-center">
                         &copy; {new Date().getFullYear()} NERD. All Rights Reserved.
                     </p>
                 </div>
