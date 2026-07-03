@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const diffRows = [
     {
@@ -74,7 +74,29 @@ const differentiators = [
     },
 ]
 
+const taglines = [
+    'One popup. Zero cloud. All local.',
+    'Built for localhost. Nowhere else.',
+    'Ship faster. Debug smarter.',
+    'No servers. No sign-ups. No limits.',
+    'Your data never leaves your machine.',
+]
+
 const WhyNerd = () => {
+    const [taglineIndex, setTaglineIndex] = useState(0)
+    const [fade, setFade] = useState(true)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFade(false)
+            setTimeout(() => {
+                setTaglineIndex((i) => (i + 1) % taglines.length)
+                setFade(true)
+            }, 250)
+        }, 2600)
+        return () => clearInterval(interval)
+    }, [])
+
     return (
         <section id="why-nerd" className="relative overflow-hidden py-24 sm:py-32">
             {/* faint grid texture, echoes Hero */}
@@ -100,21 +122,28 @@ const WhyNerd = () => {
                     </span>
                     <h2 className="mt-6 text-4xl font-black uppercase text-primary-blue sm:text-5xl">
                         Why developers reach for{' '}
-                        <span
-                            style={{
-                                background: 'linear-gradient(135deg, #021a54 0%, #021a54 70%, #ff85bb 100%)',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                backgroundClip: 'text',
-                            }}
-                        >
-                            NERD
+                        <span className="relative inline-block">
+                            <span
+                                style={{
+                                    background: 'linear-gradient(135deg, #021a54 0%, #021a54 70%, #ff85bb 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                }}
+                            >
+                                NERD
+                            </span>
+                            <span className="absolute -bottom-1 left-0 h-[3px] w-full overflow-hidden">
+                                <span className="block h-full w-full bg-linear-to-r from-accent-pink via-accent-pink/60 to-transparent" />
+                            </span>
                         </span>
                     </h2>
-                    <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">
-                        Password managers, Lighthouse, and Sentry each solve one slice of local
-                        development — and each asks for more than a locked-down localhost tab
-                        should give up.
+                    <p
+                        className={`mt-5 min-h-[1.75rem] text-base font-medium text-gray-600 transition-opacity duration-300 sm:text-lg ${
+                            fade ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    >
+                        {taglines[taglineIndex]}
                     </p>
                 </div>
 
@@ -130,7 +159,7 @@ const WhyNerd = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x md:divide-gray-200">
                         {/* Without NERD */}
                         <div>
-                            <div className="border-b border-gray-200 bg-light-gray/40 px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.15em] text-gray-500">
+                            <div className="border-b border-gray-200 bg-light-gray px-5 py-3 font-mono text-md font-bold uppercase tracking-[0.15em] text-gray-700">
                                 Without NERD
                             </div>
                             <ul className="divide-y divide-gray-100">
@@ -152,14 +181,14 @@ const WhyNerd = () => {
 
                         {/* With NERD */}
                         <div>
-                            <div className="border-b border-gray-200 bg-light-pink/20 px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.15em] text-primary-blue">
+                            <div className="border-b border-gray-200 bg-light-pink px-5 py-3 font-mono text-md font-bold uppercase tracking-[0.15em] text-primary-blue">
                                 With NERD
                             </div>
                             <ul className="divide-y divide-gray-100">
                                 {diffRows.map((row) => (
                                     <li
                                         key={row.with}
-                                        className="flex items-start gap-3 px-5 py-4 transition-colors duration-200 hover:bg-light-pink/10"
+                                        className="flex items-start gap-3 px-5 py-4 transition-colors duration-200 hover:bg-light-pink/50"
                                     >
                                         <span className="mt-0.5 select-none font-mono text-sm font-bold text-accent-pink">
                                             +
@@ -183,7 +212,7 @@ const WhyNerd = () => {
                         {differentiators.map((item) => (
                             <div
                                 key={item.title}
-                                className="group rounded-2xl border border-gray-200 bg-light-gray/30 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-pink/50 hover:shadow-lg hover:shadow-accent-pink/10"
+                                className="group rounded-2xl border border-gray-200 bg-light-gray/30 p-6 shadow-lg shadow-transparent transition-all duration-300 hover:-translate-y-1 hover:border-accent-pink/50 hover:shadow-accent-pink/40"
                             >
                                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-blue/5 text-primary-blue transition-colors duration-300 group-hover:bg-accent-pink/10 group-hover:text-accent-pink">
                                     <svg
