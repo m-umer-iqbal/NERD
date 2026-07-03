@@ -40,7 +40,7 @@ const Navbar = () => {
                     <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
                         <div className="flex flex-col items-start space-y-0">
                             <h1
-                                className="text-3xl font-black uppercase leading-tight"
+                                className="text-4xl font-black uppercase leading-tight"
                                 style={{
                                     background: "linear-gradient(135deg, #021a54 0%, #021a54 70%, #ff85bb 100%)",
                                     WebkitBackgroundClip: "text",
@@ -52,7 +52,7 @@ const Navbar = () => {
                             </h1>
                             {/* Pink underline that fades out */}
                             <div className="relative w-full h-[3px] -mt-0.5 overflow-hidden">
-                                <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-accent-pink via-accent-pink/60 to-transparent" />
+                                <div className="absolute left-0 top-0 h-full w-full bg-linear-to-r from-accent-pink via-accent-pink/60 to-transparent" />
                             </div>
                         </div>
                     </div>

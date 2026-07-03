@@ -139,12 +139,12 @@ const Hero = () => {
                 </div>
 
                 <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-                    <button className="rounded-xl bg-accent-pink px-7 py-3 font-medium text-white shadow-lg shadow-accent-pink/20 transition-all duration-300 hover:scale-105 hover:shadow-accent-pink/40 cursor-pointer">
+                    <button className="rounded-xl bg-primary-blue px-7 py-3 font-medium text-white shadow-lg shadow-primary-blue/20 transition-all duration-300 hover:bg-accent-pink hover:scale-105 hover:shadow-accent-pink/40 cursor-pointer">
                         Add to Chrome
                     </button>
                     <button
                         onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="rounded-xl border border-primary-blue/20 px-7 py-3 font-medium text-primary-blue transition-all duration-300 hover:border-accent-pink hover:text-accent-pink cursor-pointer"
+                        className="hover:scale-105 rounded-xl border border-primary-blue/20 px-7 py-3 font-medium text-primary-blue transition-all duration-300 hover:border-accent-pink hover:text-accent-pink cursor-pointer"
                     >
                         Explore Features
                     </button>
