@@ -5,7 +5,7 @@ const LINES = [
     {
         tag: 'nerd',
         headline: 'Three tools. One popup.',
-        description: 'Form saving, site auditing, and error debugging — all offline, all instant.',
+        description: 'Form saving, site auditing, and error debugging, all offline, all instant.',
     },
     {
         tag: 'local-form-saver',
@@ -15,12 +15,12 @@ const LINES = [
     {
         tag: 'website-auditor',
         headline: 'Catch it before your users do.',
-        description: 'A full performance, accessibility, and code scan in one click — fixes included.',
+        description: 'A full performance, accessibility, and code scan in one click, fixes included.',
     },
     {
         tag: 'debugging-assistant',
         headline: 'Errors that explain themselves.',
-        description: 'No more AI prompt loop — get the cause and the fix, in plain English, instantly.',
+        description: 'No more AI prompt loop, get the cause and the fix, in plain English, instantly.',
     },
 ]
 
