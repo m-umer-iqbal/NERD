@@ -72,10 +72,11 @@ const Navbar = () => {
                             ))}
                         </ul>
                         <button
-                            onClick={() => scrollToSection('contact')}
                             className="bg-primary-blue text-white px-6 py-2.5 rounded-xl font-medium text-sm hover:bg-accent-pink transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent-pink/30 cursor-pointer"
                         >
-                            Add to Chrome
+                            <a href="https://github.com/m-umer-iqbal/FYP-NERD/blob/main/Readme.md">
+                                Add to Chrome
+                            </a>
                         </button>
                     </div>
 

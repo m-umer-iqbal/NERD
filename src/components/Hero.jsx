@@ -143,7 +143,9 @@ const Hero = () => {
 
                 <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
                     <button className="rounded-xl bg-primary-blue px-7 py-3 font-medium text-white shadow-lg shadow-primary-blue/20 transition-all duration-300 hover:bg-accent-pink hover:scale-105 hover:shadow-accent-pink/40 cursor-pointer">
-                        Add to Chrome
+                        <a href="https://github.com/m-umer-iqbal/FYP-NERD/blob/main/Readme.md" target="_blank">
+                            Add to Chrome
+                        </a>
                     </button>
                     <button
                         onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
