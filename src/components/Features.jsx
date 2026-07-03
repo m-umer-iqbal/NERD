@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-// Swap these placeholder URLs with real Cloudinary demo clips per feature.
+// Feature data with added howToUse text
 const FEATURES = [
     {
         id: 'local-form-saver',
@@ -9,7 +9,14 @@ const FEATURES = [
         headline: 'Your test data, on autopilot.',
         description:
             'One click saves it. One click brings it back. Nothing leaves your machine.',
-        video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783025638/local-form-saver-testing-video_f0r0uz.mp4',
+        video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783095891/Local-Form-Saver_Testing_Video_e1vdn1.mp4',
+        howToUse: [
+            'Fill out any form on a localhost page.',
+            'Click the floating “Save Form” button.',
+            'Choose a collection and name your saved entry.',
+            'Next time, click “Autofill” & your data appears instantly.',
+            'Note: The Save Form and Autofill buttons only appear on pages whose URL contains "register" or "login" (or similar synonyms).',
+        ],
     },
     {
         id: 'website-auditor',
@@ -17,8 +24,14 @@ const FEATURES = [
         name: 'Website Auditor',
         headline: 'Catch it before your users do.',
         description:
-            'A full performance, accessibility, and code scan in one click — fixes included.',
+            'A full performance, accessibility, and code scan in one click, fixes included.',
         video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783025638/local-form-saver-testing-video_f0r0uz.mp4',
+        howToUse: [
+            'Open the extension popup and go to Website Auditor.',
+            'Click “Run Smart Analysis” & it scans the current page.',
+            'Issues are grouped by category (Performance, Accessibility, Code).',
+            'Expand any issue to see a fix suggestion with code examples.',
+        ],
     },
     {
         id: 'debugging-assistant',
@@ -26,25 +39,51 @@ const FEATURES = [
         name: 'Debugging Assistant',
         headline: 'Errors that explain themselves.',
         description:
-            'No more AI prompt loop — get the cause and the fix, in plain English, instantly.',
+            'No more AI prompt loop, get the cause and the fix, in plain English, instantly.',
         video: 'https://res.cloudinary.com/dkh7dg6fi/video/upload/v1783025638/local-form-saver-testing-video_f0r0uz.mp4',
+        howToUse: [
+            'Click “Start Monitoring” in the extension popup.',
+            'Interact with your localhost page, any JS error is captured.',
+            'Each error shows a plain‑English meaning, root cause, and fix.',
+            'Click an error to expand it and see detailed advice.',
+        ],
     },
 ]
 
 const FeatureCard = ({ feature }) => {
     const [flipped, setFlipped] = useState(false)
+    const [backMode, setBackMode] = useState('video') // 'video' or 'text'
     const frontVideoRef = useRef(null)
     const backVideoRef = useRef(null)
 
+    // Control video playback based on flipped state and backMode
     useEffect(() => {
         if (flipped) {
             frontVideoRef.current?.pause()
-            backVideoRef.current?.play()
+            if (backMode === 'video') {
+                backVideoRef.current?.play()
+            } else {
+                backVideoRef.current?.pause()
+            }
         } else {
             backVideoRef.current?.pause()
             frontVideoRef.current?.play()
         }
-    }, [flipped])
+    }, [flipped, backMode])
+
+    const handleFlipToVideo = () => {
+        setBackMode('video')
+        setFlipped(true)
+    }
+
+    const handleFlipToText = () => {
+        setBackMode('text')
+        setFlipped(true)
+    }
+
+    const handleFlipBack = () => {
+        setFlipped(false)
+    }
 
     return (
         <div
@@ -67,7 +106,7 @@ const FeatureCard = ({ feature }) => {
                         pointerEvents: flipped ? 'none' : 'auto',
                     }}
                 >
-                    {/* Terminal header bar — same treatment as workflow.diff in WhyNerd, sits ABOVE the video, not over it */}
+                    {/* Terminal header bar */}
                     <div className="flex shrink-0 items-center gap-2 border-b border-gray-200 bg-light-gray/60 px-4 py-3">
                         <span className="h-2.5 w-2.5 rounded-full bg-accent-pink/80" />
                         <span className="h-2.5 w-2.5 rounded-full bg-light-pink/60" />
@@ -75,7 +114,7 @@ const FeatureCard = ({ feature }) => {
                         <span className="ml-2 font-mono text-xs text-gray-500">{feature.tag}</span>
                     </div>
 
-                    {/* Video only fills the area below the header */}
+                    {/* Video + overlay */}
                     <div className="relative flex-1 overflow-hidden">
                         <video
                             ref={frontVideoRef}
@@ -87,8 +126,9 @@ const FeatureCard = ({ feature }) => {
                             src={feature.video}
                         />
 
-                        <div className="absolute inset-0 bg-linear-to-t from-primary-blue/90 via-primary-blue/45 to-primary-blue/35" />
+                        <div className="absolute inset-0 bg-linear-to-t from-primary-blue/90 via-primary-blue/75 to-primary-blue/45" />
 
+                        {/* Content */}
                         <div className="relative z-10 flex h-full w-full flex-col justify-end px-7 pb-9 pt-16 transition-transform duration-500 ease-out group-hover:-translate-y-1 sm:px-10 sm:pb-11">
                             <span className="h-[3px] w-16 rounded-full bg-accent-pink shadow-lg shadow-accent-pink/40 transition-all duration-500 group-hover:w-24" />
 
@@ -104,27 +144,47 @@ const FeatureCard = ({ feature }) => {
                                 {feature.description}
                             </p>
 
-                            <button
-                                onClick={() => setFlipped(true)}
-                                className="mt-6 inline-flex w-fit items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-medium text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-accent-pink hover:bg-accent-pink hover:text-primary-blue hover:shadow-xl hover:shadow-accent-pink/30 cursor-pointer"
-                            >
-                                See it in action
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    style={{ height: '16px', width: '16px' }}
-                                    className="transition-transform duration-300 group-hover:translate-x-1"
+                            <div className="mt-6 flex flex-wrap items-center gap-3">
+                                {/* See it in action – glass style */}
+                                <button
+                                    onClick={handleFlipToVideo}
+                                    className="inline-flex w-fit items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-medium text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-accent-pink hover:bg-accent-pink hover:text-primary-blue hover:shadow-xl hover:shadow-accent-pink/30 cursor-pointer"
                                 >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </button>
+                                    See it in action
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        style={{ height: '16px', width: '16px' }}
+                                        className="transition-transform duration-300 group-hover:translate-x-1"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </button>
+
+                                {/* How it works */}
+                                <button
+                                    onClick={handleFlipToText}
+                                    className="inline-flex w-fit items-center gap-2 rounded-xl border border-white bg-white px-6 py-3 font-medium text-primary-blue shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-accent-pink hover:bg-accent-pink hover:text-primary-blue hover:shadow-xl hover:shadow-accent-pink/30 cursor-pointer"
+                                >
+                                    How it works
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        style={{ height: '16px', width: '16px' }}
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* BACK FACE — video plays clean under the header, no fade/overlay at all */}
+                {/* BACK FACE — conditional: video or text */}
                 <div
                     className="absolute inset-0 flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl"
                     style={{
@@ -134,15 +194,17 @@ const FeatureCard = ({ feature }) => {
                         pointerEvents: flipped ? 'auto' : 'none',
                     }}
                 >
+                    {/* Header with close button */}
                     <div className="flex shrink-0 items-center gap-2 border-b border-gray-200 bg-light-gray/60 px-4 py-3">
                         <span className="h-2.5 w-2.5 rounded-full bg-accent-pink/80" />
                         <span className="h-2.5 w-2.5 rounded-full bg-light-pink/60" />
                         <span className="h-2.5 w-2.5 rounded-full bg-gray-300" />
-                        <span className="ml-2 font-mono text-xs text-gray-500">{feature.tag}</span>
-
+                        <span className="ml-2 font-mono text-xs text-gray-500">
+                            {backMode === 'video' ? `${feature.tag} • preview` : `${feature.tag} • guide`}
+                        </span>
                         <button
                             type="button"
-                            onClick={() => setFlipped(false)}
+                            onClick={handleFlipBack}
                             aria-label="Close preview"
                             className="ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-primary-blue/15 bg-white text-primary-blue transition-all duration-300 hover:scale-110 hover:border-accent-pink hover:bg-accent-pink hover:text-white cursor-pointer"
                         >
@@ -158,15 +220,36 @@ const FeatureCard = ({ feature }) => {
                         </button>
                     </div>
 
+                    {/* Back content */}
                     <div className="relative flex-1 overflow-hidden">
-                        <video
-                            ref={backVideoRef}
-                            className="absolute inset-0 h-full w-full object-cover"
-                            loop
-                            muted
-                            playsInline
-                            src={feature.video}
-                        />
+                        {backMode === 'video' ? (
+                            <video
+                                ref={backVideoRef}
+                                className="absolute inset-0 h-full w-full object-cover"
+                                loop
+                                muted
+                                playsInline
+                                src={feature.video}
+                            />
+                        ) : (
+                            <div className="absolute inset-0 overflow-y-auto bg-white p-8 sm:p-10">
+                                <div className="max-w-2xl mx-auto">
+                                    <h3 className="text-2xl font-bold text-primary-blue sm:text-3xl">
+                                        How to use {feature.name}
+                                    </h3>
+                                    <div className="mt-6 space-y-4 text-gray-700">
+                                        {feature.howToUse.map((step, index) => (
+                                            <div key={index} className="flex items-start gap-3">
+                                                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-pink/20 text-sm font-bold text-accent-pink">
+                                                    {index + 1}
+                                                </span>
+                                                <p className="text-sm leading-relaxed sm:text-base">{step}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
