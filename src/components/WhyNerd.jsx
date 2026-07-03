@@ -116,9 +116,12 @@ const WhyNerd = () => {
             <div className="relative z-10 mx-auto max-w-6xl px-6">
                 {/* Header */}
                 <div className="mx-auto max-w-2xl text-center">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-primary-blue/20 bg-white/80 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-primary-blue shadow-sm">
-                        <span className="h-1.5 w-1.5 rounded-full bg-accent-pink" />
-                        Existing tools vs NERD
+                    <span className="inline-flex items-center gap-2 rounded-full border border-primary-blue/20 bg-white/80 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-primary-blue shadow-sm backdrop-blur-sm">
+                        <span className="relative flex h-1.5 w-1.5 items-center justify-center">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-pink opacity-75" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-pink shadow-[0_0_6px_2px_rgba(255,133,187,0.6)]" />
+                        </span>
+                        Existing Tools vs NERD
                     </span>
                     <h2 className="mt-6 text-4xl font-black uppercase text-primary-blue sm:text-5xl">
                         Why developers reach for{' '}
