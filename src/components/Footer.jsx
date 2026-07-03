@@ -44,7 +44,7 @@ const socials = [
 
 const FooterColumn = ({ title, links }) => (
     <div>
-        <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-light-pink/60 font-bold" >
+        <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-light-pink font-bold" >
             {title}
         </h3>
         <ul className="mt-4 space-y-3">
@@ -80,17 +80,23 @@ const Footer = () => {
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
                     {/* Brand + live status + socials */}
                     <div>
-                        <h2
-                            className="text-3xl font-black uppercase"
-                            style={{
-                                background: 'linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 70%, #FF85BB 100%)',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                backgroundClip: 'text',
-                            }}
-                        >
-                            NERD
-                        </h2>
+                        <div className="relative inline-block">
+                            <h2
+                                className="text-3xl font-black uppercase"
+                                style={{
+                                    background: 'linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 70%, #FF85BB 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                }}
+                            >
+                                NERD
+                            </h2>
+                            {/* Pink underline that fades out at the end */}
+                            <div className="absolute -bottom-1 left-0 h-[3px] w-full overflow-hidden">
+                                <span className="block h-full w-full bg-linear-to-r from-accent-pink via-accent-pink/60 to-transparent" />
+                            </div>
+                        </div>
                         <p className="mt-3 max-w-xs text-sm leading-relaxed text-light-gray/70">
                             A local-first browser extension for saving forms, auditing
                             pages, and debugging JS.
